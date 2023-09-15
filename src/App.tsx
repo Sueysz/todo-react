@@ -15,6 +15,12 @@ function App() {
       setTodo("");
     }
   }
+
+  const handleDelete = (index:number) => {
+    const newTodoTask = [...todoTask];
+    newTodoTask.splice(index, 1);
+    setTodoTask(newTodoTask)
+  }
   return (
     <>
       <TodoList 
@@ -22,6 +28,7 @@ function App() {
         todoTask={todoTask}
         handleChange={handleChange}
         handleAddTask={handleAddTask}
+        handleDelete={handleDelete}
       />
     </>
   )
