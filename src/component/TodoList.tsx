@@ -1,5 +1,6 @@
-import { H1, InputContainer, TaskList } from "../styles/TodoStyle.ts";
+import { H1, InputContainer } from "../styles/TodoStyle.ts";
 import { Btn } from "../styles/Buttons.ts";
+import { TaskItem } from "./TaskItem.tsx";
 
 
 interface TodoProps {
@@ -7,11 +8,12 @@ interface TodoProps {
     todoTask: string[];
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleAddTask: () => void;
+    handleDelete: (index: number) => void;
 }
 
 export const TodoList = (props: TodoProps) => {
 
-    const { todo, todoTask, handleChange, handleAddTask } = props;
+    const { todo, todoTask, handleChange, handleAddTask, handleDelete } = props;
 
     return (
         <>
@@ -20,14 +22,10 @@ export const TodoList = (props: TodoProps) => {
                 <input type="text" placeholder="Ajouter une tâche..." onChange={handleChange} value={todo} />
                 <Btn onClick={handleAddTask}>+</Btn>
             </InputContainer>
-            <ul>
-                {todoTask.map((task, index) => (
-                    <TaskList key={index}>
-                        <li>{task}</li>
-                        <Btn>x</Btn>
-                    </TaskList>
-                ))}
-            </ul>
+            <TaskItem
+                todoTask={todoTask}
+                handleDelete={handleDelete}
+            />
 
         </>
     )

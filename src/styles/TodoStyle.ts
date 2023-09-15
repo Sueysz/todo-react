@@ -10,5 +10,5 @@ export const InputContainer = styled.div`
 `
 export const TaskList = styled.div`
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
 `
